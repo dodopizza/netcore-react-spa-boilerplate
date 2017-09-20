@@ -1,0 +1,17 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    "editor.renderWhitespace": "all",
+    "editor.insertSpaces": true,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/bin": true,
+        "**/obj": true,
+        "**/dist": true,
+        "**/*.user": true,
+        "**/node_modules": true
+    }
+}

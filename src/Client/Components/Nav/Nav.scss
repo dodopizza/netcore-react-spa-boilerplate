@@ -1,0 +1,9 @@
+.nav {
+	display: table;
+	margin: 0 -10px;
+
+	&__item {
+		display: table-cell;
+		padding: 0 10px;
+	}
+}

@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html class="page">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<link rel="stylesheet" href="~/dist/main.css" />
+
+	<title>@ViewData["Title"] - Изоморфный СПА</title>
+</head>
+<body class="page__body">
+	@RenderBody()
+
+	<script src="~/dist/vendor.js" asp-append-version="true"></script>
+	<script src="~/dist/main-client.js" asp-append-version="true"></script>
+</body>
+</html>

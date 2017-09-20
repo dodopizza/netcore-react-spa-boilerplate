@@ -1,0 +1,9 @@
+# Ignore files
+**/*.csproj.user
+
+# Ingore folders
+**/.vs
+**/bin
+**/obj
+**/dist
+**/node_modules
