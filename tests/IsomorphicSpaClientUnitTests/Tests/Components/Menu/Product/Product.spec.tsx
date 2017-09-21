@@ -1,7 +1,7 @@
 import * as React from "react";
 import { shallow } from "enzyme";
 import { expect, assert } from "chai";
-import Product from "../../../../Components/Menu/Product/Product";
+import Product from "../../../../../../src/Client/Components/Menu/Product/Product";
 
 const setup = () => {
   const props = {
@@ -27,13 +27,11 @@ describe("Components", () => {
       it("should contain name", () => {
         const { props, enzymeWrapper } = setup();
         expect(enzymeWrapper.find(".product__name").length).to.be.equal(1);
-        //assert(enzymeWrapper.find(".product__name").contains(props.product.name));
       });
 
       it("should contain description", () => {
         const { props, enzymeWrapper } = setup();
         expect(enzymeWrapper.find(".product__description").length).to.be.equal(1);
-       // assert(enzymeWrapper.find(".product__description").contains(props.product.description));
       });
     });
   });

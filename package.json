@@ -59,7 +59,7 @@
     "webpack-merge": "4.1.0"
   },
   "scripts": {
-    "test": "karma start karma.config.single.js",
-    "test:watch": "karma start karma.config.watch.js"
+    "test": "karma start ./tests/IsomorphicSpaClientUnitTests/karma.config.single.js",
+    "test:watch": "karma start ./tests/IsomorphicSpaClientUnitTests/karma.config.watch.js"
   }
 }

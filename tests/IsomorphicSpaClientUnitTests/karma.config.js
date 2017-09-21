@@ -1,9 +1,6 @@
-// Base config
-// Use this as base config
-
 module.exports = function(config) {
     return {
-        basePath: "Client/__tests__",
+        basePath: "Tests",
         frameworks: ["mocha", "chai", "sinon"],
         files: [
             "**/*.spec.tsx"
@@ -19,7 +16,7 @@ module.exports = function(config) {
             module: {
                 rules: [
                     { 
-                        test: /\.tsx?$/, include: /Client/, 
+                        test: /\.tsx?$/, 
                         use: [{ 
                             loader: "ts-loader",
                             options: {
