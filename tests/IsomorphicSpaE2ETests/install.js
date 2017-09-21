@@ -1,4 +1,4 @@
-const BINPATH = './node_modules/nightwatch/bin/';
+const BINPATH = '../../node_modules/nightwatch/bin/';
 
 /**
  * selenium-download does exactly what it's name suggests;

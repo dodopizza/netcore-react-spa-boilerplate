@@ -1,5 +1,6 @@
 # Ignore files
 **/*.csproj.user
+**/*.log
 
 # Ingore folders
 **/.vs
@@ -7,3 +8,4 @@
 **/obj
 **/dist
 **/node_modules
+**/reports

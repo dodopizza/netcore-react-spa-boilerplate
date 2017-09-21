@@ -8,11 +8,11 @@
 
   "selenium" : {
     "start_process" : true,
-    "server_path" : "./node_modules/nightwatch/bin/selenium.jar",
+    "server_path" : "../../node_modules/nightwatch/bin/selenium.jar",
     "log_path" : "",
     "port" : 4444,
     "cli_args" : {
-      "webdriver.chrome.driver" : "./node_modules/nightwatch/bin/chromedriver",
+      "webdriver.chrome.driver" : "../../node_modules/nightwatch/bin/chromedriver",
       "webdriver.gecko.driver" : "",
       "webdriver.edge.driver" : ""
     }
