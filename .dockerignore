@@ -1,0 +1,12 @@
+# Ignore files
+**/*.csproj.user
+**/*.log
+
+# Ingore folders
+**/.vs
+**/.vscode
+**/bin
+**/obj
+**/dist
+**/node_modules
+**/reports
