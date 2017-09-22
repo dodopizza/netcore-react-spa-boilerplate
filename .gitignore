@@ -5,6 +5,7 @@
 # Ingore folders
 **/.vs
 **/bin
+**/build/tools
 **/obj
 **/dist
 **/node_modules

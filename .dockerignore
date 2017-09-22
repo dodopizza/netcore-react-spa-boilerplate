@@ -1,6 +1,9 @@
 # Ignore files
 **/*.csproj.user
 **/*.log
+**/.gitignore
+**/.dockerignore
+**/README.md
 
 # Ingore folders
 **/.vs
