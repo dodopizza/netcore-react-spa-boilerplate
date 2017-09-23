@@ -8,3 +8,4 @@ RUN set -x \
     && rm -rf /var/lib/apt/lists/*
 
 # docker build -t aurokk/build -f Dockerfile.Build ..
+# в отдельную репу

@@ -4,10 +4,8 @@
     <RuntimeFrameworkVersion>2.0.0</RuntimeFrameworkVersion>
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
     <IsPackable>false</IsPackable>
+    <RuntimeIdentifiers>win10-x64;debian.8-x64</RuntimeIdentifiers>
   </PropertyGroup>
-  <ItemGroup>
-    <Folder Include="wwwroot\" />
-  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="JsonApiSerializer" Version="0.9.16" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="$(RuntimeFrameworkVersion)" />
@@ -15,13 +13,7 @@
     <PackageReference Include="Serilog.Sinks.Console" Version="3.1.0" />
   </ItemGroup>
   <ItemGroup>
-    <!-- Файлы которые нужно скрыть в IDE -->
-    <None Remove="project.json.lock" />
-    <!-- Файлы не для паблиша (заметьте, что 'dist' добавляется заново ниже) -->
     <Content Remove="Client\**" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Client\dist\vendor-manifest.json" />
   </ItemGroup>
   <Target Name="RunWebpack" AfterTargets="ComputeFilesToPublish">
     <ItemGroup>

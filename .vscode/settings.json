@@ -2,6 +2,8 @@
 {
     "editor.renderWhitespace": "all",
     "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    "editor.formatOnPaste": true,
     "files.exclude": {
         "**/.git": true,
         "**/.svn": true,

@@ -41,3 +41,4 @@ RUN buildDeps='xz-utils' \
     && ln -s /usr/local/bin/node /usr/local/bin/nodejs 
 
 # docker build -t aurokk/run -f Dockerfile.Run ..
+# в отдельную репу
