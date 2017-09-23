@@ -21,3 +21,5 @@ COPY --from=build /project/dist/app .
 
 # Step 2: Run application
 ENTRYPOINT ./IsomorphicSpa
+
+# docker build -t aurokk/app -f Dockerfile.App ..
