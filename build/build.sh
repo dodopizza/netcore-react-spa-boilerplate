@@ -93,6 +93,8 @@ if [ ! -f "$CAKE_EXE" ]; then
     exit 1
 fi
 
+echo "$CAKE_EXE" $SCRIPT -verbosity=$VERBOSITY -configuration=$CONFIGURATION -target=$TARGET $DRYRUN "${SCRIPT_ARGUMENTS[@]}"
+
 # Start Cake
 if $SHOW_VERSION; then
     exec mono "$CAKE_EXE" -version

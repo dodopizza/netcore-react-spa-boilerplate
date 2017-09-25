@@ -3,11 +3,32 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IsomorphicSpa", "src\IsomorphicSpa.csproj", "{BD6BB0F2-70F9-4904-BBAB-BA5B449E7A01}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{D5154BC8-0016-4D91-ABFA-1D042ED38B09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IsomorphicSpaUnitTests", "tests\IsomorphicSpaUnitTests\IsomorphicSpaUnitTests.csproj", "{F1A2E43E-80BC-4E95-9941-62E8918F8745}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IsomorphicSpa", "src\IsomorphicSpa\IsomorphicSpa.csproj", "{7FE2BC77-CA71-4351-AF69-19A80C40DC4B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IsomorphicSpaUnitTests", "tests\IsomorphicSpaUnitTests\IsomorphicSpaUnitTests.csproj", "{B9205864-B36D-4129-B673-6B7BC9ADED8A}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "IsomorphicSpaClientUnitTests", "tests\IsomorphicSpaClientUnitTests\", "{E88E02DD-2803-4FB2-A274-14F1981D019E}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_50359"
+		Debug.AspNetCompiler.PhysicalPath = "tests\IsomorphicSpaClientUnitTests\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50359\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_50359"
+		Release.AspNetCompiler.PhysicalPath = "tests\IsomorphicSpaClientUnitTests\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50359\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "50359"
+		SlnRelativePath = "tests\IsomorphicSpaClientUnitTests\"
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,20 +36,25 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BD6BB0F2-70F9-4904-BBAB-BA5B449E7A01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BD6BB0F2-70F9-4904-BBAB-BA5B449E7A01}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BD6BB0F2-70F9-4904-BBAB-BA5B449E7A01}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BD6BB0F2-70F9-4904-BBAB-BA5B449E7A01}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F1A2E43E-80BC-4E95-9941-62E8918F8745}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F1A2E43E-80BC-4E95-9941-62E8918F8745}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F1A2E43E-80BC-4E95-9941-62E8918F8745}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F1A2E43E-80BC-4E95-9941-62E8918F8745}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FE2BC77-CA71-4351-AF69-19A80C40DC4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FE2BC77-CA71-4351-AF69-19A80C40DC4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FE2BC77-CA71-4351-AF69-19A80C40DC4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FE2BC77-CA71-4351-AF69-19A80C40DC4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9205864-B36D-4129-B673-6B7BC9ADED8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9205864-B36D-4129-B673-6B7BC9ADED8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9205864-B36D-4129-B673-6B7BC9ADED8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9205864-B36D-4129-B673-6B7BC9ADED8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E88E02DD-2803-4FB2-A274-14F1981D019E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E88E02DD-2803-4FB2-A274-14F1981D019E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E88E02DD-2803-4FB2-A274-14F1981D019E}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{E88E02DD-2803-4FB2-A274-14F1981D019E}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{F1A2E43E-80BC-4E95-9941-62E8918F8745} = {D5154BC8-0016-4D91-ABFA-1D042ED38B09}
+		{B9205864-B36D-4129-B673-6B7BC9ADED8A} = {D5154BC8-0016-4D91-ABFA-1D042ED38B09}
+		{E88E02DD-2803-4FB2-A274-14F1981D019E} = {D5154BC8-0016-4D91-ABFA-1D042ED38B09}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3705FAC5-BBD2-48C0-B025-B7D73C4CC957}

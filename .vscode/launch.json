@@ -41,6 +41,25 @@
             "type": "coreclr",
             "request": "attach",
             "processId": "${command:pickProcess}"
+        },
+        {
+            "name": ".NET Core Remote Attach",
+            "type": "coreclr",
+            "request": "attach",
+            "processId": "${command:pickRemoteProcess}",
+            "pipeTransport": {
+                "pipeProgram": "powershell",
+                "pipeArgs": [
+                    "docker exec -i flamboyant_swanson ${debuggerCommand}"
+                ],
+                "debuggerPath": "/vsdbg/vsdbg",
+                "pipeCwd": "${workspaceRoot}",
+                "quoteArgs": true
+            },
+            "sourceFileMap": {
+                "\\project": "${workspaceRoot}"
+            },
+            "justMyCode": true
         }
     ]
 }
