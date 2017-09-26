@@ -1,15 +1,13 @@
 # Ignore files
-**/*.csproj.user
-**/*.log
-**/.gitignore
-**/.dockerignore
-**/README.md
-
-# Ingore folders
-**/.vs
-**/.vscode
-**/bin
-**/obj
-**/dist
-**/node_modules
-**/reports
+*/*.csproj.user
+*/*.log
+*/.gitignore
+*/.dockerignore
+*/README.md
+*/.vs
+*/.vscode
+*/bin
+*/dist
+*/node_modules
+*/obj
+*/reports

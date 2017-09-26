@@ -1,4 +1,3 @@
-# Run image
 FROM microsoft/dotnet:2.0.0-runtime-deps-stretch
 
 ENV NODE_VERSION 6.11.3
@@ -39,6 +38,3 @@ RUN buildDeps='xz-utils' \
     && rm "node-v$NODE_VERSION-linux-x64.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt \
     && apt-get purge -y --auto-remove $buildDeps \
     && ln -s /usr/local/bin/node /usr/local/bin/nodejs 
-
-# docker build -t aurokk/run -f Dockerfile.Run ..
-# в отдельную репу

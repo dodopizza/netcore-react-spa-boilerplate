@@ -1,5 +1,7 @@
+#addin nuget:https://www.nuget.org/api/v2?package=Cake.Npm&version=0.11.0
+
 //////////////////////////////////////////////////////////////////////
-// Arguments
+// ARGUMENTS
 //////////////////////////////////////////////////////////////////////
 
 var target = Argument("target", "Default");
@@ -9,25 +11,21 @@ var configuration = Argument("configuration", "Release");
 var runtime = Argument("runtime", "win10-x64");
 
 //////////////////////////////////////////////////////////////////////
-// Variables
+// VARIABLES
 //////////////////////////////////////////////////////////////////////
 
-// Currenct script directory
+// Current script directory
 var scriptDir = Directory(".");
 
 // Root directory
-var rootDir = scriptDir + Directory("../..");
-
-// Application directory
-var applicationName = "IsomorphicSpa";
-var applicationSourcesDir = rootDir + Directory($"src/{applicationName}");
+var solutionDir = scriptDir + Directory("..");
 
 // Publish directories
-var publishDir = rootDir + Directory("dist");
+var publishDir = solutionDir + Directory("dist");
 var publishApplicationDir = publishDir + Directory("app");
 
 //////////////////////////////////////////////////////////////////////
-// Tasks
+// TASKS
 //////////////////////////////////////////////////////////////////////
 
 Task("Clean")
@@ -35,9 +33,41 @@ Task("Clean")
         CleanDirectory(publishDir);
     });
 
-Task("Publish Application")
-    .IsDependentOn("Clean")
+Task("Npm Install")
     .Does(() => {
+        var settings = new NpmInstallSettings {
+            WorkingDirectory = solutionDir,
+            LogLevel = NpmLogLevel.Warn
+        };
+
+        NpmInstall(settings);
+    });
+
+Task("Run Client Unit Tests")
+    .Does(() => {
+        var settings = new NpmRunScriptSettings{
+            WorkingDirectory = solutionDir,
+            LogLevel = NpmLogLevel.Warn,
+            ScriptName = "test"
+        };
+
+        NpmRunScript(settings);
+    });
+
+Task("Run Backend Unit Tests")
+    .Does(() => {
+        var backendTestsSourcesDir = solutionDir + Directory("tests/IsomorphicSpaUnitTests");
+        var settings = new DotNetCoreTestSettings
+        {
+            Configuration = configuration
+        };
+
+        DotNetCoreTest(backendTestsSourcesDir, settings);
+    });
+
+Task("Publish Application")
+    .Does(() => {
+        var applicationSourcesDir = solutionDir + Directory("src/IsomorphicSpa");
         var settings = new DotNetCorePublishSettings
         {
             Configuration = configuration,
@@ -49,14 +79,18 @@ Task("Publish Application")
     });
 
 //////////////////////////////////////////////////////////////////////
-// Target
+// TASK TARGETS
 //////////////////////////////////////////////////////////////////////
 
 Task("Default")
+    .IsDependentOn("Clean")
+    .IsDependentOn("Npm Install")
+    .IsDependentOn("Run Client Unit Tests")
+    .IsDependentOn("Run Backend Unit Tests")
     .IsDependentOn("Publish Application");
 
 //////////////////////////////////////////////////////////////////////
-// Execution
+// EXECUTION
 //////////////////////////////////////////////////////////////////////
 
 RunTarget(target);

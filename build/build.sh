@@ -51,6 +51,10 @@ if [ ! -d "$TOOLS_DIR" ]; then
   mkdir "$TOOLS_DIR"
 fi
 
+echo $TOOLS_DIR
+echo "$TOOLS_DIR/packages.config"
+echo -f "$TOOLS_DIR/packages.config"
+
 # Make sure that packages.config exist.
 if [ ! -f "$TOOLS_DIR/packages.config" ]; then
     echo "Downloading packages.config..."

@@ -1,4 +1,3 @@
-# Build image
 FROM microsoft/aspnetcore-build:2.0.0-stretch
 
 # Step 1: Install mono
@@ -6,6 +5,3 @@ RUN set -x \
     && apt-get update \
     && apt-get install -y mono-complete \
     && rm -rf /var/lib/apt/lists/*
-
-# docker build -t aurokk/build -f Dockerfile.Build ..
-# в отдельную репу
