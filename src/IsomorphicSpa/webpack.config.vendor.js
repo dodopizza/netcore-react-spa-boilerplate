@@ -1,23 +1,24 @@
 const path = require("path");
 const webpack = require("webpack");
 const merge = require("webpack-merge");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-module.exports = (env) => {
-    const isDevBuild = !(env && env.prod);
-    const extractCSS = new ExtractTextPlugin("vendor.css");
+module.exports = () => {
+    const isProduction = process.argv.indexOf('-p') !== -1;
 
     const sharedConfig = {
         stats: { modules: false },
         resolve: { extensions: [".js"] },
         entry: {
             vendor: [
+                "axios",
                 "history",
                 "react",
                 "react-dom",
                 "react-redux",
                 "redux",
-                "redux-thunk"
+                "redux-thunk",
+                "redux-first-router",
+                "react-hot-loader"
             ]
         },
         output: {
@@ -27,27 +28,20 @@ module.exports = (env) => {
         },
         plugins: [
             new webpack.DefinePlugin({
-                "process.env.NODE_ENV": isDevBuild ? '"development"' : '"production"'
+                "process.env.NODE_ENV": isProduction ? '"production"' : '"development"'
             })
         ]
     };
 
     const clientBundleConfig = merge(sharedConfig, {
         output: { path: path.join(__dirname, "wwwroot", "dist") },
-        module: {
-            rules: [
-                { test: /\.css(\?|$)/, use: extractCSS.extract({ use: isDevBuild ? "css-loader" : "css-loader?minimize" }) }
-            ]
-        },
         plugins: [
-            extractCSS,
             new webpack.DllPlugin({
+                context: path.join(__dirname, "..", ".."),
                 path: path.join(__dirname, "wwwroot", "dist", "[name]-manifest.json"),
                 name: "[name]_[hash]"
             })
-        ].concat(isDevBuild ? [] : [
-            new webpack.optimize.UglifyJsPlugin()
-        ])
+        ].concat(isProduction ? [new webpack.optimize.UglifyJsPlugin()] : [])
     });
 
     const serverBundleConfig = merge(sharedConfig, {
@@ -57,9 +51,6 @@ module.exports = (env) => {
             path: path.join(__dirname, "Client", "dist"),
             libraryTarget: "commonjs2"
         },
-        module: {
-            rules: [{ test: /\.css(\?|$)/, use: isDevBuild ? "css-loader" : "css-loader?minimize" }]
-        },
         entry: {
             vendor: [
                 "aspnet-prerendering",
@@ -68,6 +59,7 @@ module.exports = (env) => {
         },
         plugins: [
             new webpack.DllPlugin({
+                context: path.join(__dirname, "..", ".."),
                 path: path.join(__dirname, "Client", "dist", "[name]-manifest.json"),
                 name: "[name]_[hash]"
             })

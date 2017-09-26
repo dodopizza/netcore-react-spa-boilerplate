@@ -33,16 +33,6 @@ Task("Clean")
         CleanDirectory(publishDir);
     });
 
-Task("Npm Install")
-    .Does(() => {
-        var settings = new NpmInstallSettings {
-            WorkingDirectory = solutionDir,
-            LogLevel = NpmLogLevel.Warn
-        };
-
-        NpmInstall(settings);
-    });
-
 Task("Run Client Unit Tests")
     .Does(() => {
         var settings = new NpmRunScriptSettings{
@@ -65,6 +55,17 @@ Task("Run Backend Unit Tests")
         DotNetCoreTest(backendTestsSourcesDir, settings);
     });
 
+Task("Build Client Side")
+    .Does(() => {
+        var settings = new NpmRunScriptSettings{
+            WorkingDirectory = solutionDir,
+            LogLevel = NpmLogLevel.Warn,
+            ScriptName = "build:prod"
+        };
+
+        NpmRunScript(settings);
+    });
+
 Task("Publish Application")
     .Does(() => {
         var applicationSourcesDir = solutionDir + Directory("src/IsomorphicSpa");
@@ -84,9 +85,9 @@ Task("Publish Application")
 
 Task("Default")
     .IsDependentOn("Clean")
-    .IsDependentOn("Npm Install")
     .IsDependentOn("Run Client Unit Tests")
     .IsDependentOn("Run Backend Unit Tests")
+    .IsDependentOn("Build Client Side")
     .IsDependentOn("Publish Application");
 
 //////////////////////////////////////////////////////////////////////

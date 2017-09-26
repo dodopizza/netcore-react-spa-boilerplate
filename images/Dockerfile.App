@@ -12,7 +12,7 @@ WORKDIR build
 
 RUN ./build.sh \
 # main (CAKE) params should have two dash sign
-    --configuration Debug \
+    --configuration Release \
     --script /project/build/application.cake \
 # additional (SCRIPT) params should have one dash sign
     -runtime=debian.8-x64
