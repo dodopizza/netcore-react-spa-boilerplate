@@ -48,6 +48,8 @@ Task("Build Application Execution Image")
 
 // Command: .\build.ps1 -script "image.cake"
 Task("Build Application Image")
+    .IsDependentOn("Build Application Build Image")
+    .IsDependentOn("Build Application Execution Image")
     .Does(() => {
         var tags = new [] {
             "aurokk/app"
