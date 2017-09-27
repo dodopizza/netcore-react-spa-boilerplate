@@ -2,6 +2,7 @@
 **/*.csproj.user
 **/*.log
 **/*.lock
+**/*.DS_Store
 
 # Ingore folders
 **/.vs

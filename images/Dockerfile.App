@@ -19,7 +19,7 @@ RUN ./build.sh \
 FROM aurokk/run
 WORKDIR /app
 
-ENV ASPNETCORE_URLS http://+:80
+ENV ASPNETCORE_URLS http://*:80
 
 # Step 1: Copy application binaries
 COPY --from=build /project/dist/app .
@@ -27,4 +27,4 @@ COPY --from=build /project/dist/app .
 # Step 2: Run application
 ENTRYPOINT ./IsomorphicSpa
 
-# docker run -d -p 5000:80 aurokk/app
+# docker run -d -p 80:80 aurokk/app
