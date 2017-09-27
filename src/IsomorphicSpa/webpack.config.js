@@ -108,7 +108,7 @@ module.exports = () => {
             new webpack.DllReferencePlugin({
                 context: path.join(__dirname, "..", ".."),
                 manifest: require(path.join(__dirname, 'Client', 'dist', 'vendor-manifest.json')),
-                sourceType: "commonjs2",
+                sourceType: "commonjs2"
             })
         ],
         output: {
