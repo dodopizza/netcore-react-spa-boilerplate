@@ -6,7 +6,7 @@
 //////////////////////////////////////////////////////////////////////
 
 var target = Argument("target", "Default");
-var configuration = Argument("configuration", "Release");
+var configuration = Argument("configuration", "Debug");
 
 // Can be win10-x64 or debian.8-x64
 var runtime = Argument("runtime", "win10-x64");
@@ -25,6 +25,9 @@ var solutionDir = scriptDir + Directory("..");
 var publishDir = solutionDir + Directory("dist");
 var publishApplicationDir = publishDir + Directory("app");
 
+// Application directory
+var applicationSourcesDir = solutionDir + Directory("src/IsomorphicSpa");
+
 //////////////////////////////////////////////////////////////////////
 // TASKS
 //////////////////////////////////////////////////////////////////////
@@ -36,21 +39,23 @@ Task("Clean")
 
 Task("Yarn Install")
     .Does(() => {
+        Console.WriteLine(applicationSourcesDir);
+
         Yarn
-            .FromPath(solutionDir)
+            .FromPath(applicationSourcesDir)
             .Install();
     });
 
 Task("Run Client Unit Tests")
     .Does(() => {
         Yarn
-            .FromPath(solutionDir)
+            .FromPath(applicationSourcesDir)
             .RunScript("test");
     });
 
 Task("Run Backend Unit Tests")
     .Does(() => {
-        var backendTestsSourcesDir = solutionDir + Directory("tests/IsomorphicSpaUnitTests");
+        var backendTestsSourcesDir = solutionDir + Directory("src/IsomorphicSpaUnitTests");
         var settings = new DotNetCoreTestSettings
         {
             Configuration = configuration
@@ -61,14 +66,17 @@ Task("Run Backend Unit Tests")
 
 Task("Build Client Side")
     .Does(() => {
+        var scriptName = configuration == "Release"
+            ? "build:prod"
+            : "build";
+
         Yarn
-            .FromPath(solutionDir)
-            .RunScript("build:prod");
+            .FromPath(applicationSourcesDir)
+            .RunScript(scriptName);
     });
 
 Task("Publish Application")
     .Does(() => {
-        var applicationSourcesDir = solutionDir + Directory("src/IsomorphicSpa");
         var settings = new DotNetCorePublishSettings
         {
             Configuration = configuration,

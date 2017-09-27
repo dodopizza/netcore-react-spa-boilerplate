@@ -7,12 +7,11 @@ RUN set -x \
     && rm -rf /var/lib/apt/lists/*
 
 # Step 2: Install yarn
-RUN curl -o- -L https://yarnpkg.com/install.sh | bash
+RUN npm install -g yarn
 
 # Step 3: Warm up yarn
-WORKDIR /project
+WORKDIR /project/src/IsomorphicSpa
 
-COPY package.json .
+COPY src/IsomorphicSpa/package.json .
 
-ENV PATH "/root/.yarn/bin:$PATH"
 RUN yarn install

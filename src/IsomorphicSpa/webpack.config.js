@@ -71,7 +71,7 @@ module.exports = () => {
         plugins: [
             extractPlugin,
             new webpack.DllReferencePlugin({
-                context: path.join(__dirname, "..", ".."),
+                context: __dirname,
                 manifest: require(path.join(__dirname, 'wwwroot', 'dist', 'vendor-manifest.json'))
             })
         ].concat(isProduction ? [
@@ -106,7 +106,7 @@ module.exports = () => {
         },
         plugins: [
             new webpack.DllReferencePlugin({
-                context: path.join(__dirname, "..", ".."),
+                context: __dirname,
                 manifest: require(path.join(__dirname, 'Client', 'dist', 'vendor-manifest.json')),
                 sourceType: "commonjs2"
             })

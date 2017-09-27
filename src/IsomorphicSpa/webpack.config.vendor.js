@@ -37,7 +37,7 @@ module.exports = () => {
         output: { path: path.join(__dirname, "wwwroot", "dist") },
         plugins: [
             new webpack.DllPlugin({
-                context: path.join(__dirname, "..", ".."),
+                context: __dirname,
                 path: path.join(__dirname, "wwwroot", "dist", "[name]-manifest.json"),
                 name: "[name]_[hash]"
             })
@@ -59,7 +59,7 @@ module.exports = () => {
         },
         plugins: [
             new webpack.DllPlugin({
-                context: path.join(__dirname, "..", ".."),
+                context: __dirname,
                 path: path.join(__dirname, "Client", "dist", "[name]-manifest.json"),
                 name: "./[name]"
             })

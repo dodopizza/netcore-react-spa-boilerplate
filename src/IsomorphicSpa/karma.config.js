@@ -1,6 +1,6 @@
 module.exports = function(config) {
     return {
-        basePath: "Tests",
+        basePath: "Client/Tests",
         frameworks: ["mocha", "chai", "sinon"],
         files: [
             "**/*.spec.tsx"

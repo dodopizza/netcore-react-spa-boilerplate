@@ -5,8 +5,6 @@ WORKDIR /project
 # Step 1: Copy application sources into container
 COPY . .
 
-ENV TOOLS_DIR "."
-
 # Step 2: Build application with cake
 WORKDIR build
 

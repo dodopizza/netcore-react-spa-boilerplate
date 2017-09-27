@@ -61,13 +61,13 @@
         "webpack-merge": "4.1.0"
     },
     "scripts": {
-        "build-vendor": "webpack --config ./src/IsomorphicSpa/webpack.config.vendor.js",
-        "build-custom": "webpack --config ./src/IsomorphicSpa/webpack.config.js",
+        "build-vendor": "webpack --config webpack.config.vendor.js",
+        "build-custom": "webpack --config webpack.config.js",
         "build": "yarn run build-vendor && yarn run build-custom",
-        "build-vendor:prod": "webpack --config ./src/IsomorphicSpa/webpack.config.vendor.js -p",
-        "build-custom:prod": "webpack --config ./src/IsomorphicSpa/webpack.config.js -p",
+        "build-vendor:prod": "webpack --config webpack.config.vendor.js -p",
+        "build-custom:prod": "webpack --config webpack.config.js -p",
         "build:prod": "yarn run build-vendor:prod && yarn run build-custom:prod",
-        "test": "karma start ./tests/IsomorphicSpaClientUnitTests/karma.config.single.js",
-        "test:watch": "karma start ./tests/IsomorphicSpaClientUnitTests/karma.config.watch.js"
+        "test": "karma start karma.config.single.js",
+        "test:watch": "karma start karma.config.watch.js"
     }
 }

@@ -56,7 +56,8 @@ Task("Build Application Image")
         var settings = new DockerBuildSettings {
             File = "../images/Dockerfile.App",
             ForceRm = true,
-            Tag = tags
+            Tag = tags,
+            NoCache = true
         };
 
         var context = "..";

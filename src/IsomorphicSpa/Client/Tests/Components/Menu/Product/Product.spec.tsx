@@ -1,7 +1,7 @@
 import * as React from "react";
 import { shallow } from "enzyme";
 import { expect, assert } from "chai";
-import Product from "../../../../../../src/IsomorphicSpa/Client/Components/Menu/Product/Product";
+import Product from "../../../../Components/Menu/Product/Product";
 
 const setup = () => {
     const props = {

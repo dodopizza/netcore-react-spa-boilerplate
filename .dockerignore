@@ -2,7 +2,7 @@
 **/**/*.csproj.user
 **/**/*.log
 **/.gitignore
-**/.lock
+**/*.lock
 **/README.md
 **/.vs
 **/.vscode
