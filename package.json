@@ -63,10 +63,10 @@
     "scripts": {
         "build-vendor": "webpack --config ./src/IsomorphicSpa/webpack.config.vendor.js",
         "build-custom": "webpack --config ./src/IsomorphicSpa/webpack.config.js",
-        "build": "npm run build-vendor && npm run build-custom",
+        "build": "yarn run build-vendor && yarn run build-custom",
         "build-vendor:prod": "webpack --config ./src/IsomorphicSpa/webpack.config.vendor.js -p",
         "build-custom:prod": "webpack --config ./src/IsomorphicSpa/webpack.config.js -p",
-        "build:prod": "npm run build-vendor:prod && npm run build-custom:prod",
+        "build:prod": "yarn run build-vendor:prod && yarn run build-custom:prod",
         "test": "karma start ./tests/IsomorphicSpaClientUnitTests/karma.config.single.js",
         "test:watch": "karma start ./tests/IsomorphicSpaClientUnitTests/karma.config.watch.js"
     }

@@ -1,4 +1,5 @@
 #addin nuget:https://www.nuget.org/api/v2?package=Cake.Npm&version=0.11.0
+#addin nuget:https://www.nuget.org/api/v2?package=Cake.Yarn&version=0.3.5
 
 //////////////////////////////////////////////////////////////////////
 // ARGUMENTS
@@ -33,15 +34,18 @@ Task("Clean")
         CleanDirectory(publishDir);
     });
 
+Task("Yarn Install")
+    .Does(() => {
+        Yarn
+            .FromPath(solutionDir)
+            .Install();
+    });
+
 Task("Run Client Unit Tests")
     .Does(() => {
-        var settings = new NpmRunScriptSettings{
-            WorkingDirectory = solutionDir,
-            LogLevel = NpmLogLevel.Warn,
-            ScriptName = "test"
-        };
-
-        NpmRunScript(settings);
+        Yarn
+            .FromPath(solutionDir)
+            .RunScript("test");
     });
 
 Task("Run Backend Unit Tests")
@@ -57,13 +61,9 @@ Task("Run Backend Unit Tests")
 
 Task("Build Client Side")
     .Does(() => {
-        var settings = new NpmRunScriptSettings{
-            WorkingDirectory = solutionDir,
-            LogLevel = NpmLogLevel.Warn,
-            ScriptName = "build:prod"
-        };
-
-        NpmRunScript(settings);
+        Yarn
+            .FromPath(solutionDir)
+            .RunScript("build:prod");
     });
 
 Task("Publish Application")
@@ -85,6 +85,7 @@ Task("Publish Application")
 
 Task("Default")
     .IsDependentOn("Clean")
+    .IsDependentOn("Yarn Install")
     .IsDependentOn("Run Client Unit Tests")
     .IsDependentOn("Run Backend Unit Tests")
     .IsDependentOn("Build Client Side")

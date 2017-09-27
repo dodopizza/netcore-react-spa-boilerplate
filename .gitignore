@@ -1,6 +1,7 @@
 # Ignore files
 **/*.csproj.user
 **/*.log
+**/*.lock
 
 # Ingore folders
 **/.vs
