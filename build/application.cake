@@ -91,6 +91,8 @@ Task("Publish Application")
 // TASK TARGETS
 //////////////////////////////////////////////////////////////////////
 
+// Win Command: .\build.ps1 -script '"application.cake"'
+// Unix Command: ./build.sh --script '"application.cake"'
 Task("Default")
     .IsDependentOn("Clean")
     .IsDependentOn("Yarn Install")

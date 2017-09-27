@@ -10,7 +10,8 @@ var target = Argument("target", "Default");
 // TASKS
 //////////////////////////////////////////////////////////////////////
 
-// Command: .\build.ps1 -target "Build Application Build Image" -script "image.cake"
+// Win Command: .\build.ps1 -target '"Build Application Build Image"' -script '"image.cake"'
+// Unix Command: ./build.sh --target '"Build Application Build Image"' --script '"image.cake"'
 Task("Build Application Build Image")
     .Does(() => {
         var tags = new [] {
@@ -29,6 +30,7 @@ Task("Build Application Build Image")
     });
 
 // Command: .\build.ps1 -target "Build Application Execution Image" -script "image.cake"
+// Unix Command: ./build.sh --target '"Build Application Execution Image"' --script '"image.cake"'
 Task("Build Application Execution Image")
     .Does(() => {
         var tags = new [] {
@@ -46,10 +48,9 @@ Task("Build Application Execution Image")
         DockerBuild(settings, context);
     });
 
-// Command: .\build.ps1 -script "image.cake"
+// Command: .\build.ps1 -target "Build Application Image" -script "image.cake"
+// Unix Command: ./build.sh --script '"image.cake"' --target '"Build Application Image"'
 Task("Build Application Image")
-    .IsDependentOn("Build Application Build Image")
-    .IsDependentOn("Build Application Execution Image")
     .Does(() => {
         var tags = new [] {
             "aurokk/app"
@@ -58,8 +59,7 @@ Task("Build Application Image")
         var settings = new DockerBuildSettings {
             File = "../images/Dockerfile.App",
             ForceRm = true,
-            Tag = tags,
-            NoCache = true
+            Tag = tags
         };
 
         var context = "..";
@@ -72,6 +72,8 @@ Task("Build Application Image")
 //////////////////////////////////////////////////////////////////////
 
 Task("Default")
+    .IsDependentOn("Build Application Build Image")
+    .IsDependentOn("Build Application Execution Image")
     .IsDependentOn("Build Application Image");
 
 //////////////////////////////////////////////////////////////////////
