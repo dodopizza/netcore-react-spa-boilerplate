@@ -1,18 +1,19 @@
 # Ignore files
-*/*.csproj.user
-*/*.log
-*/.gitignore
-*/*.lock
-*/README.md
+**/.gitignore
+**/*.csproj.user
+**/*.lock
+**/README.md
 
-# Ignore directories
-*/.git*
-*/.vs*
-*/.vscode*
-*/bin*
-*/build/tools*
-!*/build/tools/packages.config
-*/dist*
-*/node_modules*
-*/obj*
-*/reports*
+# Ignore folders
+**/node_modules
+**/.git
+**/.vs
+**/.vscode
+**/bin
+**/obj
+**/dist
+**/build/tools/Addins
+**/build/tools/Cake
+**/build/tools/nuget.exe
+**/build/tools/packages.config.*
+**/reports
