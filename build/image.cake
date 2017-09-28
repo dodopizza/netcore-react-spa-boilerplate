@@ -78,6 +78,8 @@ Task("Default")
     .IsDependentOn("Build Application Execution Image")
     .IsDependentOn("Build Application Image");
 
+// docker rmi $(docker images --quiet --filter "dangling=true")
+
 //////////////////////////////////////////////////////////////////////
 // EXECUTION
 //////////////////////////////////////////////////////////////////////
