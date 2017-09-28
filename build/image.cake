@@ -10,7 +10,7 @@ var target = Argument("target", "Default");
 // TASKS
 //////////////////////////////////////////////////////////////////////
 
-// Win Command: .\build.ps1 -target '"Build Application Build Image"' -script '"image.cake"'
+// Win Command: .\build.ps1 -target "Build Application Build Image" -script "image.cake"
 // Unix Command: ./build.sh --target '"Build Application Build Image"' --script '"image.cake"'
 Task("Build Application Build Image")
     .Does(() => {
@@ -71,6 +71,8 @@ Task("Build Application Image")
 // TASK TARGETS
 //////////////////////////////////////////////////////////////////////
 
+// Command: .\build.ps1 -script "image.cake"
+// Unix Command: ./build.sh --script '"image.cake"'
 Task("Default")
     .IsDependentOn("Build Application Build Image")
     .IsDependentOn("Build Application Execution Image")
